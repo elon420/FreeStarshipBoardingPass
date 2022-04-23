@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     let { f0, web3 } = await connect(c)
     const { key, address } = f0.parseURL(location.href)
     let invite = await f0.invite(key)
-    let placeholder = await f0.placeholder()
     const name = await f0.name()
     const symbol = await f0.symbol()
     const nextId = await f0.nextId()
@@ -49,7 +48,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       items.push(i)
     }
     document.querySelector(".box").innerHTML = template({
-      image: placeholder.converted.image,
       title: `${name} (${symbol})`,
       items: items.map((item) => { return { count: item } }),
       max: invite.condition.converted.limit,
